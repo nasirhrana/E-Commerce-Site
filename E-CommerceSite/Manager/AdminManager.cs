@@ -26,5 +26,26 @@ namespace E_CommerceSite.Manager
         {
             return adminGateway.IsCategoryNameExists(categoryname);
         }
+        public string SaveSubCategory(SubCategory subCategory)
+        {
+            if (adminGateway.SaveSubCategory(subCategory) > 0)
+            {
+                return "Category has been saved successfully";
+            }
+            else
+            {
+                return "Failed to save Category";
+            }
+        }
+
+        public bool IsSubCategoryNameExists(string subCategoryname)
+        {
+            return adminGateway.IsSubCategoryNameExists(subCategoryname);
+        }
+
+        public List<Category> GetAllCategory()
+        {
+            return adminGateway.GetAllCategory();
+        }
     }
 }

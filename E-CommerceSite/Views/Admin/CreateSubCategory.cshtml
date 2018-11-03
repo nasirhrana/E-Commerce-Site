@@ -1,0 +1,59 @@
+﻿@model E_CommerceSite.Models.SubCategory
+
+@{
+    ViewBag.Title = "CreateSubCategory";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2 style="text-align: center">Sub Category Entry</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <label id="Name" class="control-label col-md-4"></label>
+            <div class="col-md-8">
+                <select name="CategoryId" id="CategoryId" class="form-control">
+                    <option value="">--Select Catagory--</option>
+                    @foreach (var category in ViewBag.CategoryId)
+                    {
+                        <option value="@category.CategoryId">@category.CategoryName</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.CategoryId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="Name" class="control-label col-md-4"></label>
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.SubCategoryName, new { placeholder = " Enter Sub Category Name", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SubCategoryName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="Name" class="control-label col-md-4"></label>
+            <div class="col-md-8">
+                <input type="submit" value="Save" class="btn btn-default" style="background-color: #4CAF50;color: white" />
+            </div>
+        </div>
+    </div>
+}
+<h3 style="text-align: center; color: green">@ViewBag.Msg</h3>
+
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

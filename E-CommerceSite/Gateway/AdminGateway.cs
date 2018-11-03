@@ -46,5 +46,58 @@ namespace E_CommerceSite.Gateway
             return isExists;
 
         }
+        public int SaveSubCategory(SubCategory subCategory)
+        {
+            string query = @"INSERT INTO [dbo].[SubCatagory]
+           ([CatagoryId]
+           ,[SubCatagoryName])
+     VALUES('"+subCategory.CategoryId+"','" + subCategory.SubCategoryName + "')";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            int rowAffected = cmd.ExecuteNonQuery();
+            con.Close();
+            return rowAffected;
+        }
+
+        public bool IsSubCategoryNameExists(string subCategoryName)
+        {
+
+            bool isExists = false;
+
+            string query = "SELECT * FROM [dbo].[SubCatagory] WHERE (SubCatagoryName= @SubCatagoryName) ";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            cmd.Parameters.AddWithValue("@SubCatagoryName", subCategoryName);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                isExists = true;
+            }
+
+            reader.Close();
+            con.Close();
+            return isExists;
+
+        }
+
+        public List<Category> GetAllCategory()
+        {
+            string query = @"SELECT * FROM [dbo].[Catagory]";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<Category> aList=new List<Category>();
+            while (reader.Read())
+            {
+                Category aCategory=new Category();
+                aCategory.CategoryId = (int) reader["CatagoryId"];
+                aCategory.CategoryName = reader["CatagoryName"].ToString();
+                
+                aList.Add(aCategory);
+            }
+            reader.Close();
+            con.Close();
+            return aList;
+        }
     }
 }

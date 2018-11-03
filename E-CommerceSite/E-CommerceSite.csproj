@@ -165,6 +165,7 @@
     </Compile>
     <Compile Include="Manager\AdminManager.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\SubCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -2918,6 +2919,7 @@
     <Content Include="web\images\Thumbs.db" />
     <Content Include="Views\Shared\_Admin.cshtml" />
     <Content Include="Views\Admin\CreateCategory.cshtml" />
+    <Content Include="Views\Admin\CreateSubCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
