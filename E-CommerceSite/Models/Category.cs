@@ -13,7 +13,7 @@ namespace E_CommerceSite.Models
         public int CategoryId { get; set; }
         [Required]
         [DisplayName("Company Name")]
-        [Remote("IsCompanyNameExists", "Admin", ErrorMessage = " Company Name Already exist!!!")]
+        [Remote("IsCategoryNameExists", "Admin", ErrorMessage = " Category Name Already exist!!!")]
         public string CategoryName { get; set; }
     }
 }

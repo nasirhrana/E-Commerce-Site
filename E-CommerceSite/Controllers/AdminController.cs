@@ -34,9 +34,9 @@ namespace E_CommerceSite.Controllers
             }
             return View();
         }
-        public JsonResult IsCompanyNameExists(string companyName)
+        public JsonResult IsCategoryNameExists(string categoryName)
         {
-            bool isExist = adminManager.IsCompanyNameExists(companyName);
+            bool isExist = adminManager.IsCategoryNameExists(categoryName);
 
             return Json(!isExist, JsonRequestBehavior.AllowGet);
         }

@@ -22,9 +22,9 @@ namespace E_CommerceSite.Manager
             }
         }
 
-        public bool IsCompanyNameExists(string name)
+        public bool IsCategoryNameExists(string categoryname)
         {
-            return adminGateway.IsCompanyNameExists(name);
+            return adminGateway.IsCategoryNameExists(categoryname);
         }
     }
 }

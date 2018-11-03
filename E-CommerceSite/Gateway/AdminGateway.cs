@@ -26,15 +26,15 @@ namespace E_CommerceSite.Gateway
             return rowAffected;
         }
 
-        public bool IsCompanyNameExists(string name)
+        public bool IsCategoryNameExists(string categoryname)
         {
 
             bool isExists = false;
 
-            string query = "SELECT * FROM [dbo].[Company] WHERE (CompanyName= @CompanyName) ";
+            string query = "SELECT * FROM [dbo].[Catagory] WHERE (CatagoryName= @CatagoryName) ";
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
-            cmd.Parameters.AddWithValue("@CompanyName", name);
+            cmd.Parameters.AddWithValue("@CatagoryName", categoryname);
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
             {

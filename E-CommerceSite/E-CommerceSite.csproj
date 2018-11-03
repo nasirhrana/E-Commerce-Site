@@ -159,14 +159,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\CheckController.cs" />
     <Compile Include="Gateway\AdminGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Manager\AdminManager.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Company.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -2919,7 +2917,7 @@
     <Content Include="web\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="web\images\Thumbs.db" />
     <Content Include="Views\Shared\_Admin.cshtml" />
-    <Content Include="Views\Admin\CreateCompany.cshtml" />
+    <Content Include="Views\Admin\CreateCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
