@@ -1,0 +1,94 @@
+﻿@model E_CommerceSite.Models.Item
+
+@{
+    ViewBag.Title = "CreateItem";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2 style="text-align: center">Create Item</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        
+        <div class="form-group">
+            <label id="Name" class="control-label col-md-4"></label>
+            <div class="col-md-8">
+                <select name="CategoryId" id="CategoryId" class="form-control">
+                    <option value="">--Select Catagory--</option>
+                    @foreach (var category in ViewBag.CategoryId)
+                    {
+                        <option value="@category.CategoryId">@category.CategoryName</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="Name" class="control-label col-md-4"></label>
+            <div class="col-md-8" >
+                <select name="SubCategoryId" id="SubCategoryId" class="form-control">
+                    <option value="">--Select Sub Category--</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.SubCategoryId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="Name" class="control-label col-md-4"></label>
+            <div class="col-md-8">
+                @Html.TextBoxFor(model => model.ItemName, new { placeholder = " Enter Item Name", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ItemName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="Name" class="control-label col-md-4"></label>
+            <div class="col-md-8">
+                <input type="submit" value="Save" class="btn btn-default" style="background-color: #4CAF50;color: white" />
+            </div>
+        </div>
+    </div>
+}
+<h3 style="text-align: center; color: green">@ViewBag.Msg</h3>
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function() {
+            $("#CategoryId").change(function () {
+                var catId = $("#CategoryId").val();
+                $("#SubCategoryId").empty();
+                $("#SubCategoryId").append('<option value="">--Select Sub Category--</option>');
+                var json = { catagoryId: catId };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetSubCategoryByCategoryId", "Admin")',
+                    //url: '/Department/GetStudentsByDepartmentId',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $("#SubCategoryId").append('<option value=' + value.SubCategoryId + '>' + value.SubCategoryName + '</option>');
+                        });
+                    },
+                    error: {
+
+                    },
+                    complete: {
+
+                    }
+                });
+            });
+        });
+    </script>
+}

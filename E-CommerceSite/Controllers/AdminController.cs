@@ -70,5 +70,42 @@ namespace E_CommerceSite.Controllers
             return Json(!isExist, JsonRequestBehavior.AllowGet);
         }
 
+
+
+        [HttpGet]
+        public ActionResult CreateItem()
+        {
+            ViewBag.CategoryId = adminManager.GetAllCategory();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateItem(Item item)
+        {
+
+            if (ModelState.IsValid)
+            {
+                ViewBag.Msg = adminManager.SaveItem(item);
+            }
+            ViewBag.CategoryId = adminManager.GetAllCategory();
+            return View();
+        }
+
+        public JsonResult GetSubCategoryByCategoryId(int catagoryId)
+        {
+            List<SubCategory> alList = adminManager.GetSubCategoryByCategoryId(catagoryId);
+            return Json(alList, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult IsItemNameExists(string itemName)
+        {
+            bool isExist = adminManager.IsItemNameExists(itemName);
+
+            return Json(!isExist, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
     }
 }

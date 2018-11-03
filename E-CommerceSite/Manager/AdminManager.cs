@@ -47,5 +47,26 @@ namespace E_CommerceSite.Manager
         {
             return adminGateway.GetAllCategory();
         }
+
+        public List<SubCategory> GetSubCategoryByCategoryId(int id)
+        {
+            return adminGateway.GetSubCategoryByCategoryId(id);
+        }
+
+        public string SaveItem(Item item)
+        {
+            if (adminGateway.SaveItem(item) > 0)
+            {
+                return "Item has been saved successfully";
+            }
+            else
+            {
+                return "Failed to save Item";
+            }
+        }
+        public bool IsItemNameExists(string itemName)
+        {
+            return adminGateway.IsItemNameExists(itemName);
+        }
     }
 }

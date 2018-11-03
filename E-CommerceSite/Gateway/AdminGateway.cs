@@ -99,5 +99,58 @@ namespace E_CommerceSite.Gateway
             con.Close();
             return aList;
         }
+
+        public List<SubCategory> GetSubCategoryByCategoryId(int id)
+        {
+            string query = @"SELECT * FROM [dbo].[SubCatagory] where CatagoryId='"+@id+"'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<SubCategory> aList = new List<SubCategory>();
+            while (reader.Read())
+            {
+                SubCategory aCategory = new SubCategory();
+                aCategory.SubCategoryId = (int)reader["SubCatagoeyId"];
+                aCategory.SubCategoryName = reader["SubCatagoryName"].ToString();
+
+                aList.Add(aCategory);
+            }
+            reader.Close();
+            con.Close();
+            return aList;
+        }
+
+        public int SaveItem(Item item)
+        {
+            string query = @"INSERT INTO [dbo].[Item]
+           ([SubCatagoryId]
+           ,[ItemName])
+     VALUES('" + item.SubCategoryId + "','" + item.ItemName + "')";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            int rowAffected = cmd.ExecuteNonQuery();
+            con.Close();
+            return rowAffected;
+        }
+        public bool IsItemNameExists(string itemName)
+        {
+
+            bool isExists = false;
+
+            string query = "SELECT * FROM [dbo].[Item] WHERE (ItemName= @ItemName) ";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            cmd.Parameters.AddWithValue("@ItemName", itemName);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                isExists = true;
+            }
+
+            reader.Close();
+            con.Close();
+            return isExists;
+
+        }
     }
 }
