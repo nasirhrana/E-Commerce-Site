@@ -159,19 +159,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductQuantityController.cs" />
     <Compile Include="Controllers\ProductSizeController.cs" />
     <Compile Include="Gateway\AdminGateway.cs" />
+    <Compile Include="Gateway\ProductGateway.cs" />
     <Compile Include="Gateway\ProductSizeGateway.cs" />
     <Compile Include="Gateway\QuantityGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Manager\AdminManager.cs" />
+    <Compile Include="Manager\ProductManager.cs" />
     <Compile Include="Manager\ProductSizeManager.cs" />
     <Compile Include="Manager\QuantityManager.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductQuantity.cs" />
     <Compile Include="Models\ProductSize.cs" />
     <Compile Include="Models\SubCategory.cs" />
@@ -188,6 +192,7 @@
     <Content Include="index.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\JavaScript1.js" />
     <Content Include="web\css\aaf5c053.proton.css" />
     <Content Include="web\css\basictable.css" />
     <Content Include="web\css\bootstrap.css" />
@@ -2931,9 +2936,11 @@
     <Content Include="Views\Admin\CreateItem.cshtml" />
     <Content Include="Views\ProductSize\CreateProductSize.cshtml" />
     <Content Include="Views\ProductQuantity\SaveQuantity.cshtml" />
+    <Content Include="Views\Product\PublishProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UploadFile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -8,7 +8,7 @@ using E_CommerceSite.Models;
 
 namespace E_CommerceSite.Gateway
 {
-    public class QuantityGateway
+    public class ProductGateway
     {
         private SqlConnection con = new SqlConnection(
             WebConfigurationManager.ConnectionStrings["EcommerceDB"].ConnectionString);
@@ -69,13 +69,38 @@ namespace E_CommerceSite.Gateway
             con.Close();
             return aList;
         }
-        public int SaveQuantity(ProductQuantity productQuantity)
+        public List<ProductSize> GetProductSizeBySubCategoryId(int id)
         {
-            string query = @"INSERT INTO [dbo].[Quantity]
+            string query = @"SELECT * FROM [dbo].[ProductSize] where SubCatagoryId='" + @id + "'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<ProductSize> aList = new List<ProductSize>();
+            while (reader.Read())
+            {
+                ProductSize aCategory = new ProductSize();
+                aCategory.ProductSizeId = (int)reader["ProductSizeId"];
+                aCategory.ProductSizeName = reader["ProductSize"].ToString();
+
+                aList.Add(aCategory);
+            }
+            reader.Close();
+            con.Close();
+            return aList;
+        }
+        public int PublishProduct(Product product)
+        {
+            string query = @"INSERT INTO [dbo].[Product]
            ([ItemId]
-           ,[Quantity]
-           ,[DateOfEntry])
-     VALUES('" + productQuantity.ItemId + "','" + productQuantity.Quantity + "','" + productQuantity.DateOfEntry + "')";
+           ,[Image]
+           ,[Description]
+           ,[ProductSizeId]
+           ,[Prize]
+           ,[Discount]
+           ,[Colour]
+           ,[DateOfPublish]
+           ,[Status])
+     VALUES('" + product.ItemId + "','" + product.UploadFile + "','" + product.Description + "','" + product.ProductSizeId + "','" + product.Prize + "','" + product.Discount + "','" + product.Colour + "','" + product.DateOfPublish + "','" + product.Status + "')";
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
             int rowAffected = cmd.ExecuteNonQuery();

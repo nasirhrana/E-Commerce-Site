@@ -26,6 +26,7 @@ namespace E_CommerceSite.Controllers
         [HttpPost]
         public ActionResult SaveQuantity(ProductQuantity productQuantity)
         {
+            productQuantity.DateOfEntry = DateTime.Today;
             if (ModelState.IsValid)
             {
                 if (ModelState.IsValid)

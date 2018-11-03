@@ -14,5 +14,8 @@ namespace E_CommerceSite.Models
         [Required]
         [Range(1, Double.MaxValue, ErrorMessage = "Value must be non-negative and greater than 0")]
         public double Quantity { get; set; }
+        [Required]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime DateOfEntry { get; set; }
     }
 }
