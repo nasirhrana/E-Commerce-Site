@@ -8,7 +8,7 @@ using E_CommerceSite.Models;
 
 namespace E_CommerceSite.Gateway
 {
-    public class ProductSizeGateway
+    public class QuantityGateway
     {
         private SqlConnection con = new SqlConnection(
             WebConfigurationManager.ConnectionStrings["EcommerceDB"].ConnectionString);
@@ -50,40 +50,36 @@ namespace E_CommerceSite.Gateway
             con.Close();
             return aList;
         }
-        
-        public int CreateProductSize(ProductSize productSize)
+        public List<Item> GetItemBySubCategoryId(int id)
         {
-            string query = @"INSERT INTO [dbo].[ProductSize]
-           ([SubCatagoryId]
-           ,[ProductSize])
-     VALUES('" + productSize.SubCategoryId + "','" + productSize.ProductSizeName + "')";
+            string query = @"SELECT * FROM [dbo].[Item] where SubCatagoryId='" + @id + "'";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<Item> aList = new List<Item>();
+            while (reader.Read())
+            {
+                Item aCategory = new Item();
+                aCategory.ItemId = (int)reader["ItemId"];
+                aCategory.ItemName = reader["ItemName"].ToString();
+
+                aList.Add(aCategory);
+            }
+            reader.Close();
+            con.Close();
+            return aList;
+        }
+        public int SaveQuantity(ProductQuantity productQuantity)
+        {
+            string query = @"INSERT INTO [dbo].[Quantity]
+           ([ItemId]
+           ,[Quantity])
+     VALUES('" + productQuantity.ItemId + "','" + productQuantity.Quantity + "')";
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
             int rowAffected = cmd.ExecuteNonQuery();
             con.Close();
             return rowAffected;
         }
-
-        public bool IsProductSizeExists(string productSize)
-        {
-
-            bool isExists = false;
-
-            string query = "SELECT * FROM [dbo].[ProductSize] WHERE (ProductSize= @ProductSize) ";
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            cmd.Parameters.AddWithValue("@ProductSize", productSize);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-                isExists = true;
-            }
-
-            reader.Close();
-            con.Close();
-            return isExists;
-
-        }
-
     }
 }

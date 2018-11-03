@@ -41,15 +41,11 @@ namespace E_CommerceSite.Controllers
             List<SubCategory> alList = aProductSizeManager.GetSubCategoryByCategoryId(catagoryId);
             return Json(alList, JsonRequestBehavior.AllowGet);
         }
-        //public JsonResult GetItemBySubCategoryId(int subCatagoryId)
-        //{
-        //    List<Item> alList = aProductSizeManager.GetItemBySubCategoryId(subCatagoryId);
-        //    return Json(alList, JsonRequestBehavior.AllowGet);
-        //}
+        
 
-        public JsonResult IsProductSizeExists(string size)
-        {
-            bool isExist = aProductSizeManager.IsProductSizeExists(size);
+        public JsonResult IsProductSizeExists(ProductSize size)
+            {
+            bool isExist = aProductSizeManager.IsProductSizeExists(size.ProductSizeName);
 
             return Json(!isExist, JsonRequestBehavior.AllowGet);
         }

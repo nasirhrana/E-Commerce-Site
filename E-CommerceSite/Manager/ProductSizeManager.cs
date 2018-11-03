@@ -18,10 +18,7 @@ namespace E_CommerceSite.Manager
         {
             return aProductSizeGateway.GetSubCategoryByCategoryId(id);
         }
-        //public List<Item> GetItemBySubCategoryId(int subCatagoryId)
-        //{
-        //    return aProductSizeGateway.GetItemBySubCategoryId(subCatagoryId);
-        //}
+        
 
         public string CreateProductSize(ProductSize productSize)
         {

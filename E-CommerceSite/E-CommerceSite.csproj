@@ -159,16 +159,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ProductQuantityController.cs" />
     <Compile Include="Controllers\ProductSizeController.cs" />
     <Compile Include="Gateway\AdminGateway.cs" />
     <Compile Include="Gateway\ProductSizeGateway.cs" />
+    <Compile Include="Gateway\QuantityGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Manager\AdminManager.cs" />
     <Compile Include="Manager\ProductSizeManager.cs" />
+    <Compile Include="Manager\QuantityManager.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ProductQuantity.cs" />
     <Compile Include="Models\ProductSize.cs" />
     <Compile Include="Models\SubCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2914,7 +2918,6 @@
     <Content Include="Template\vendor\slick\slick.less" />
     <Content Include="Template\vendor\slick\slick.scss" />
     <Content Include="Views\Shared\Master.cshtml" />
-    <Content Include="Views\Check\Index.cshtml" />
     <Content Include="web\fonts\fontawesome-webfont.eot" />
     <Content Include="web\fonts\fontawesome-webfont.ttf" />
     <Content Include="web\fonts\fontawesome-webfont.woff" />
@@ -2927,6 +2930,7 @@
     <Content Include="Views\Admin\CreateSubCategory.cshtml" />
     <Content Include="Views\Admin\CreateItem.cshtml" />
     <Content Include="Views\ProductSize\CreateProductSize.cshtml" />
+    <Content Include="Views\ProductQuantity\SaveQuantity.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
