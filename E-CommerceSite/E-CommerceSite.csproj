@@ -159,13 +159,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ProductSizeController.cs" />
     <Compile Include="Gateway\AdminGateway.cs" />
+    <Compile Include="Gateway\ProductSizeGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Manager\AdminManager.cs" />
+    <Compile Include="Manager\ProductSizeManager.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ProductSize.cs" />
     <Compile Include="Models\SubCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -2922,6 +2926,7 @@
     <Content Include="Views\Admin\CreateCategory.cshtml" />
     <Content Include="Views\Admin\CreateSubCategory.cshtml" />
     <Content Include="Views\Admin\CreateItem.cshtml" />
+    <Content Include="Views\ProductSize\CreateProductSize.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
