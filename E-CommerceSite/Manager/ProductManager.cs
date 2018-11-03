@@ -26,6 +26,10 @@ namespace E_CommerceSite.Manager
         {
             return aProductGateway.GetProductSizeBySubCategoryId(subCatagoryId);
         }
+        public List<ProductColour> GetAllColour()
+        {
+            return aProductGateway.GetAllColour();
+        }
         public string PublishProduct(Product product)
         {
             if (aProductGateway.PublishProduct(product) > 0)

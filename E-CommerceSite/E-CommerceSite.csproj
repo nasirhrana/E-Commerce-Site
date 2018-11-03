@@ -159,10 +159,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ProductColourController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductQuantityController.cs" />
     <Compile Include="Controllers\ProductSizeController.cs" />
     <Compile Include="Gateway\AdminGateway.cs" />
+    <Compile Include="Gateway\ProductColourGateway.cs" />
     <Compile Include="Gateway\ProductGateway.cs" />
     <Compile Include="Gateway\ProductSizeGateway.cs" />
     <Compile Include="Gateway\QuantityGateway.cs" />
@@ -170,12 +172,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Manager\AdminManager.cs" />
+    <Compile Include="Manager\ProductColourManager.cs" />
     <Compile Include="Manager\ProductManager.cs" />
     <Compile Include="Manager\ProductSizeManager.cs" />
     <Compile Include="Manager\QuantityManager.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductColour.cs" />
     <Compile Include="Models\ProductQuantity.cs" />
     <Compile Include="Models\ProductSize.cs" />
     <Compile Include="Models\SubCategory.cs" />
@@ -2937,6 +2941,7 @@
     <Content Include="Views\ProductSize\CreateProductSize.cshtml" />
     <Content Include="Views\ProductQuantity\SaveQuantity.cshtml" />
     <Content Include="Views\Product\PublishProduct.cshtml" />
+    <Content Include="Views\ProductColour\SaveColour.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

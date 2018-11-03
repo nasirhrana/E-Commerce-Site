@@ -20,7 +20,9 @@ namespace E_CommerceSite.Controllers
         [HttpGet]
         public ActionResult PublishProduct()
         {
+            
             ViewBag.CategoryId = aProductManager.GetAllCategory();
+            ViewBag.ColourId = aProductManager.GetAllColour();
             return View();
         }
         [HttpPost]
@@ -74,6 +76,7 @@ namespace E_CommerceSite.Controllers
             }
 
             ViewBag.CategoryId = aProductManager.GetAllCategory();
+            ViewBag.ColourId = aProductManager.GetAllColour();
 
             return View();
         }

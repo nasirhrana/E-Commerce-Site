@@ -31,6 +31,25 @@ namespace E_CommerceSite.Gateway
             con.Close();
             return aList;
         }
+        public List<ProductColour> GetAllColour()
+        {
+            string query = @"SELECT * FROM [dbo].[ProductColour]";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<ProductColour> aList = new List<ProductColour>();
+            while (reader.Read())
+            {
+                ProductColour aCategory = new ProductColour();
+                aCategory.ProductColourId = (int)reader["ProductColourId"];
+                aCategory.ProductColourName = reader["ProductColour"].ToString();
+
+                aList.Add(aCategory);
+            }
+            reader.Close();
+            con.Close();
+            return aList;
+        }
         public List<SubCategory> GetSubCategoryByCategoryId(int id)
         {
             string query = @"SELECT * FROM [dbo].[SubCatagory] where CatagoryId='" + @id + "'";
@@ -97,10 +116,10 @@ namespace E_CommerceSite.Gateway
            ,[ProductSizeId]
            ,[Prize]
            ,[Discount]
-           ,[Colour]
+           ,[ColourId]
            ,[DateOfPublish]
            ,[Status])
-     VALUES('" + product.ItemId + "','" + product.UploadFile + "','" + product.Description + "','" + product.ProductSizeId + "','" + product.Prize + "','" + product.Discount + "','" + product.Colour + "','" + product.DateOfPublish + "','" + product.Status + "')";
+     VALUES('" + product.ItemId + "','" + product.UploadFile + "','" + product.Description + "','" + product.ProductSizeId + "','" + product.Prize + "','" + product.Discount + "','" + product.ColourId + "','" + product.DateOfPublish + "','" + product.Status + "')";
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
             int rowAffected = cmd.ExecuteNonQuery();

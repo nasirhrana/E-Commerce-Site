@@ -16,7 +16,7 @@
         <hr />
         @Html.ValidationSummary(true)
         <div class="form-group">
-            <label for="UploadFile" class="col-sm-5 control-label"> Image Input </label>
+            <label for="UploadFile" class="col-sm-5 control-label"></label>
             <div class="col-md-7">
                 <input type="file" style="color: transparent" id="UploadFile" name="UploadFile" accept="image/x-png,image/gif,image/jpeg" onchange="validateFileType()">
                 <div id="imgPreview" class="thumbnail" style="display: none; height: 200px; width: 200px; display: flex; background-color: gray">
@@ -92,11 +92,24 @@
         <div class="form-group">
             <label id="Name" class="control-label col-md-4"></label>
             <div class="col-md-8">
-                @Html.TextBoxFor(model => model.Colour, new { placeholder = " Enter Product Colour", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Colour)
+                <select name="ColourId" id="ColourId" class="form-control">
+                    <option value="">--Select Catagory--</option>
+                    @foreach (var colour in ViewBag.ColourId)
+                    {
+                        <option value="@colour.ProductColourId">@colour.ProductColourName</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.ColourId)
             </div>
         </div>
-
+        <div class="form-group">
+            <label id="Name" class="control-label col-md-4"></label>
+            <div class="col-md-8">
+                @Html.RadioButtonFor(m => m.Gender, "Men")Male
+                @Html.RadioButtonFor(m => m.Gender, "Women")Female
+                @Html.ValidationMessageFor(model => model.Gender)
+            </div>
+        </div>
 
         <div class="form-group">
             <label id="Name" class="control-label col-md-4"></label>
@@ -111,7 +124,6 @@
 @*<div>
     @Html.ActionLink("Back to List", "Index")
 </div>*@
-
 @section Scripts {
     @*@Scripts.Render("~/bundles/jqueryval")*@
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>

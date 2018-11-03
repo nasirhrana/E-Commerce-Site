@@ -24,7 +24,9 @@ namespace E_CommerceSite.Models
         [Range(0, Double.MaxValue, ErrorMessage = "Value must be non-negative")]
         public double Discount { get; set; }
         [Required]
-        public string Colour { get; set; }
+        public int ColourId { get; set; }
+        [Required]
+        public string Gender { get; set; }
         [Required]
         [DataType(DataType.Date), DisplayFormat(DataFormatString = "{MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateOfPublish { get; set; }
