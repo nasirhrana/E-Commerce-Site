@@ -20,17 +20,17 @@ namespace E_CommerceSite.Controllers
         }
 
         [HttpGet]
-        public ActionResult CreateCompany()
+        public ActionResult CreateCategory()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult CreateCompany(Company company)
+        public ActionResult CreateCategory(Category category)
         {
             if (ModelState.IsValid)
             {
-                ViewBag.Msg = adminManager.SaveCompany(company);
+                ViewBag.Msg = adminManager.SaveCategory(category);
             }
             return View();
         }

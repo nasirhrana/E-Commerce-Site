@@ -10,15 +10,15 @@ namespace E_CommerceSite.Manager
     public class AdminManager
     {
         private AdminGateway adminGateway=new AdminGateway();
-        public string SaveCompany(Company company)
+        public string SaveCategory(Category category)
         {
-            if (adminGateway.SaveCompany(company)>0)
+            if (adminGateway.SaveCategory(category) > 0)
             {
-                return "Company has been saved successfully";
+                return "Category has been saved successfully";
             }
             else
             {
-                return "Failed to save company";
+                return "Failed to save Category";
             }
         }
 

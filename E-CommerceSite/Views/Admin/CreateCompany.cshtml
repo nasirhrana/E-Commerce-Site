@@ -1,7 +1,7 @@
-﻿@model E_CommerceSite.Models.Company
+﻿@model E_CommerceSite.Models.Category
 
 @{
-    ViewBag.Title = "CreateCompany";
+    ViewBag.Title = "CreateCategory";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
@@ -18,8 +18,8 @@
         <div class="form-group">
             <label id="Name" class="control-label col-md-4"></label>
             <div class="col-md-8">
-                @Html.TextBoxFor(m => m.CompanyName, new { placeholder = " Enter Company Name", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CompanyName)
+                @Html.TextBoxFor(m => m.CategoryName, new { placeholder = " Enter Category Name", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CategoryName)
             </div>
         </div>
 

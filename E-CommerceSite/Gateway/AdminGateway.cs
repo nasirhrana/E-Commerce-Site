@@ -14,11 +14,11 @@ namespace E_CommerceSite.Gateway
         private SqlConnection con = new SqlConnection(
             WebConfigurationManager.ConnectionStrings["EcommerceDB"].ConnectionString);
 
-        public int SaveCompany(Company company)
+        public int SaveCategory(Category category)
         {
-            string query = @"INSERT INTO [dbo].[Company]
-           ([CompanyName])
-     VALUES('"+company.CompanyName+"')";
+            string query = @"INSERT INTO [dbo].[Catagory]
+           ([CatagoryName])
+     VALUES('" + category.CategoryName + "')";
             SqlCommand cmd = new SqlCommand(query, con);
             con.Open();
             int rowAffected = cmd.ExecuteNonQuery();
