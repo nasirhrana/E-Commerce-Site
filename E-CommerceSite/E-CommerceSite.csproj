@@ -163,11 +163,13 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductQuantityController.cs" />
     <Compile Include="Controllers\ProductSizeController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Gateway\AdminGateway.cs" />
     <Compile Include="Gateway\ProductColourGateway.cs" />
     <Compile Include="Gateway\ProductGateway.cs" />
     <Compile Include="Gateway\ProductSizeGateway.cs" />
     <Compile Include="Gateway\QuantityGateway.cs" />
+    <Compile Include="Gateway\RegistrationGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,12 +178,14 @@
     <Compile Include="Manager\ProductManager.cs" />
     <Compile Include="Manager\ProductSizeManager.cs" />
     <Compile Include="Manager\QuantityManager.cs" />
+    <Compile Include="Manager\RegistrationManager.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductColour.cs" />
     <Compile Include="Models\ProductQuantity.cs" />
     <Compile Include="Models\ProductSize.cs" />
+    <Compile Include="Models\Registration.cs" />
     <Compile Include="Models\SubCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -2943,6 +2947,7 @@
     <Content Include="Views\Product\PublishProduct.cshtml" />
     <Content Include="Views\ProductColour\SaveColour.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Registration\Registration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

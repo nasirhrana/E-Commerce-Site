@@ -105,8 +105,10 @@
         <div class="form-group">
             <label id="Name" class="control-label col-md-4"></label>
             <div class="col-md-8">
-                @Html.RadioButtonFor(m => m.Gender, "Men")Male
-                @Html.RadioButtonFor(m => m.Gender, "Women")Female
+                @Html.RadioButtonFor(m => m.Gender, "Men")Men
+                @Html.RadioButtonFor(m => m.Gender, "Women")Women
+                @Html.RadioButtonFor(m => m.Gender, "Neuter")Neuter
+                @Html.RadioButtonFor(m => m.Gender, "Common")Common
                 @Html.ValidationMessageFor(model => model.Gender)
             </div>
         </div>
