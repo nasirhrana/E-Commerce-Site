@@ -16,141 +16,268 @@ namespace E_CommerceSite.Gateway
 
         public int SaveCategory(Category category)
         {
-            string query = @"INSERT INTO [dbo].[Catagory]
+
+
+            try
+            {
+                string query = @"INSERT INTO [dbo].[Catagory]
            ([CatagoryName])
      VALUES('" + category.CategoryName + "')";
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            int rowAffected = cmd.ExecuteNonQuery();
-            con.Close();
-            return rowAffected;
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                int rowAffected = cmd.ExecuteNonQuery();
+                
+                return rowAffected;
+            }
+            catch (Exception exception)
+            {
+
+                return 0;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+
+            
         }
 
         public bool IsCategoryNameExists(string categoryname)
         {
 
-            bool isExists = false;
-
-            string query = "SELECT * FROM [dbo].[Catagory] WHERE (CatagoryName= @CatagoryName) ";
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            cmd.Parameters.AddWithValue("@CatagoryName", categoryname);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            try
             {
-                isExists = true;
+                bool isExists = false;
+
+                string query = "SELECT * FROM [dbo].[Catagory] WHERE (CatagoryName= @CatagoryName) ";
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@CatagoryName", categoryname);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    isExists = true;
+                }
+
+                reader.Close();
+                
+                return isExists;
+            }
+            catch (Exception exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
             }
 
-            reader.Close();
-            con.Close();
-            return isExists;
+
+
+
+            
 
         }
         public int SaveSubCategory(SubCategory subCategory)
         {
-            string query = @"INSERT INTO [dbo].[SubCatagory]
+            try
+            {
+                string query = @"INSERT INTO [dbo].[SubCatagory]
            ([CatagoryId]
            ,[SubCatagoryName])
-     VALUES('"+subCategory.CategoryId+"','" + subCategory.SubCategoryName + "')";
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            int rowAffected = cmd.ExecuteNonQuery();
-            con.Close();
-            return rowAffected;
+     VALUES('" + subCategory.CategoryId + "','" + subCategory.SubCategoryName + "')";
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                int rowAffected = cmd.ExecuteNonQuery();
+                
+                return rowAffected;
+            }
+            catch (Exception exception)
+            {
+
+                return 0;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+
+            
         }
 
         public bool IsSubCategoryNameExists(string subCategoryName)
         {
-
-            bool isExists = false;
-
-            string query = "SELECT * FROM [dbo].[SubCatagory] WHERE (SubCatagoryName= @SubCatagoryName) ";
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            cmd.Parameters.AddWithValue("@SubCatagoryName", subCategoryName);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            try
             {
-                isExists = true;
+                bool isExists = false;
+
+                string query = "SELECT * FROM [dbo].[SubCatagory] WHERE (SubCatagoryName= @SubCatagoryName) ";
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@SubCatagoryName", subCategoryName);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    isExists = true;
+                }
+
+                reader.Close();
+                
+                return isExists;
+            }
+            catch (Exception exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
             }
 
-            reader.Close();
-            con.Close();
-            return isExists;
+
+
+            
 
         }
 
         public List<Category> GetAllCategory()
         {
-            string query = @"SELECT * FROM [dbo].[Catagory]";
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-            List<Category> aList=new List<Category>();
-            while (reader.Read())
+            try
             {
-                Category aCategory=new Category();
-                aCategory.CategoryId = (int) reader["CatagoryId"];
-                aCategory.CategoryName = reader["CatagoryName"].ToString();
+                string query = @"SELECT * FROM [dbo].[Catagory]";
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                List<Category> aList = new List<Category>();
+                while (reader.Read())
+                {
+                    Category aCategory = new Category();
+                    aCategory.CategoryId = (int)reader["CatagoryId"];
+                    aCategory.CategoryName = reader["CatagoryName"].ToString();
+
+                    aList.Add(aCategory);
+                }
+                reader.Close();
                 
-                aList.Add(aCategory);
+                return aList;
             }
-            reader.Close();
-            con.Close();
-            return aList;
+            catch (Exception exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+
+            
         }
 
         public List<SubCategory> GetSubCategoryByCategoryId(int id)
         {
-            string query = @"SELECT * FROM [dbo].[SubCatagory] where CatagoryId='"+@id+"'";
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-            List<SubCategory> aList = new List<SubCategory>();
-            while (reader.Read())
-            {
-                SubCategory aCategory = new SubCategory();
-                aCategory.SubCategoryId = (int)reader["SubCatagoeyId"];
-                aCategory.SubCategoryName = reader["SubCatagoryName"].ToString();
 
-                aList.Add(aCategory);
+            try
+            {
+                string query = @"SELECT * FROM [dbo].[SubCatagory] where CatagoryId='" + @id + "'";
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                List<SubCategory> aList = new List<SubCategory>();
+                while (reader.Read())
+                {
+                    SubCategory aCategory = new SubCategory();
+                    aCategory.SubCategoryId = (int)reader["SubCatagoeyId"];
+                    aCategory.SubCategoryName = reader["SubCatagoryName"].ToString();
+
+                    aList.Add(aCategory);
+                }
+                reader.Close();
+                
+                return aList;
             }
-            reader.Close();
-            con.Close();
-            return aList;
+            catch (Exception exception)
+            {
+
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+
+            
         }
 
         public int SaveItem(Item item)
         {
-            string query = @"INSERT INTO [dbo].[Item]
+
+            try
+            {
+                string query = @"INSERT INTO [dbo].[Item]
            ([SubCatagoryId]
            ,[ItemName])
      VALUES('" + item.SubCategoryId + "','" + item.ItemName + "')";
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            int rowAffected = cmd.ExecuteNonQuery();
-            con.Close();
-            return rowAffected;
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                int rowAffected = cmd.ExecuteNonQuery();
+                
+                return rowAffected;
+            }
+            catch (Exception exception)
+            {
+
+                return 0;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+
+            
         }
         public bool IsItemNameExists(string itemName)
         {
 
-            bool isExists = false;
-
-            string query = "SELECT * FROM [dbo].[Item] WHERE (ItemName= @ItemName) ";
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            cmd.Parameters.AddWithValue("@ItemName", itemName);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            try
             {
-                isExists = true;
+                bool isExists = false;
+
+                string query = "SELECT * FROM [dbo].[Item] WHERE (ItemName= @ItemName) ";
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@ItemName", itemName);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    isExists = true;
+                }
+
+                reader.Close();
+                
+                return isExists;
+
+            }
+            catch (Exception exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
             }
 
-            reader.Close();
-            con.Close();
-            return isExists;
 
+
+            
         }
     }
 }

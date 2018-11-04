@@ -52,3 +52,4 @@ C:\Users\nasir\Desktop\ECommerceSite\E-CommerceSiteSolution\E-CommerceSite\bin\M
 C:\Users\nasir\Desktop\ECommerceSite\E-CommerceSiteSolution\E-CommerceSite\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\nasir\Desktop\ECommerceSite\E-CommerceSiteSolution\E-CommerceSite\obj\Debug\E-CommerceSite.dll
 C:\Users\nasir\Desktop\ECommerceSite\E-CommerceSiteSolution\E-CommerceSite\obj\Debug\E-CommerceSite.pdb
+C:\Users\nasir\Desktop\ECommerceSite\E-CommerceSiteSolution\E-CommerceSite\obj\Debug\E-CommerceSite.csprojResolveAssemblyReference.cache

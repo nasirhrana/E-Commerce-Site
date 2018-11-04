@@ -14,34 +14,68 @@ namespace E_CommerceSite.Gateway
             WebConfigurationManager.ConnectionStrings["EcommerceDB"].ConnectionString);
         public int SaveColour(ProductColour productColour)
         {
-            string query = @"INSERT INTO [dbo].[ProductColour]
+
+
+            try
+            {
+                string query = @"INSERT INTO [dbo].[ProductColour]
            ([ProductColour])
      VALUES('" + productColour.ProductColourName + "')";
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            int rowAffected = cmd.ExecuteNonQuery();
-            con.Close();
-            return rowAffected;
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                int rowAffected = cmd.ExecuteNonQuery();
+               
+                return rowAffected;
+            }
+            catch (Exception exception)
+            {
+
+                return 0;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+
+            
         }
 
         public bool IsColourExists(string colourname)
         {
 
-            bool isExists = false;
 
-            string query = "SELECT * FROM [dbo].[ProductColour] WHERE (ProductColour= @ProductColour) ";
-            SqlCommand cmd = new SqlCommand(query, con);
-            con.Open();
-            cmd.Parameters.AddWithValue("@ProductColour", colourname);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            try
             {
-                isExists = true;
+                bool isExists = false;
+
+                string query = "SELECT * FROM [dbo].[ProductColour] WHERE (ProductColour= @ProductColour) ";
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@ProductColour", colourname);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    isExists = true;
+                }
+
+                reader.Close();
+               
+                return isExists;
+            }
+            catch (Exception exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                con.Close();
             }
 
-            reader.Close();
-            con.Close();
-            return isExists;
+
+
+            
 
         }
     }

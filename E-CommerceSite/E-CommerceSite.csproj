@@ -2942,6 +2942,7 @@
     <Content Include="Views\ProductQuantity\SaveQuantity.cshtml" />
     <Content Include="Views\Product\PublishProduct.cshtml" />
     <Content Include="Views\ProductColour\SaveColour.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

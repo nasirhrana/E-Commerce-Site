@@ -26,7 +26,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <nav class="main-menu">
         <ul>
             <li>
-                <a href="@Url.Action("Dashboard", "Event")">
+                <a href="@Url.Action("Dashboard", "Admin")">
                     <i class="fa fa-home nav_icon"></i>
                     <span class="nav-text">
                         Dashboard
@@ -34,42 +34,58 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </a>
             </li>
             <li>
-                <a href="@Url.Action("CreateUser", "User")">
+                <a href="@Url.Action("CreateCategory", "Admin")">
                     <i class="fa fa-user nav-icon"></i>
                     <span class="nav-text">
-                        User Create
+                         Create Category
                     </span>
                 </a>
             </li>
             <li>
-                <a href="@Url.Action("CreateEvent", "Event")">
+                <a href="@Url.Action("CreateSubCategory", "Admin")">
                     <i class="fa fa-bar-chart nav_icon"></i>
                     <span class="nav-text">
-                        Event Create
+                         Create Sub Category
                     </span>
                 </a>
             </li>
             <li>
-                <a href="@Url.Action("ShowDateWiseEvent", "Event")">
+                <a href="@Url.Action("CreateItem", "Admin")">
                     <i class="fa fa-bar-chart nav_icon"></i>
                     <span class="nav-text">
-                        Check Date Wise Event
+                        Create Item
                     </span>
                 </a>
             </li>
             <li>
-                <a href="@Url.Action("ShowEventWiseReport", "Event")">
+                <a href="@Url.Action("SaveQuantity", "ProductQuantity")">
                     <i class="fa fa-bar-chart nav_icon"></i>
                     <span class="nav-text">
-                        Show Event Report
+                        Save Quantity
                     </span>
                 </a>
             </li>
             <li>
-                <a href="@Url.Action("ShowEventReportGenderWise", "Event")">
+                <a href="@Url.Action("SaveColour", "ProductColour")">
                     <i class="fa fa-bar-chart nav_icon"></i>
                     <span class="nav-text">
-                        Show Gender Wise Report
+                        Save Colour
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("CreateProductSize", "ProductSize")">
+                    <i class="fa fa-bar-chart nav_icon"></i>
+                    <span class="nav-text">
+                        Save Product Size
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("PublishProduct", "Product")">
+                    <i class="fa fa-bar-chart nav_icon"></i>
+                    <span class="nav-text">
+                        Publish Product
                     </span>
                 </a>
             </li>
